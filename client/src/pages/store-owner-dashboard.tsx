@@ -18,7 +18,7 @@ export default function StoreOwnerDashboard() {
   const [showPasswordModal, setShowPasswordModal] = useState(false);
 
   const { data: stores, isLoading: storesLoading } = useQuery({
-    queryKey: ["/api/stores/owner", user?.id],
+    queryKey: ["/api/stores/owner", user?.user?.id],
     enabled: !!user,
     onError: (error) => {
       if (isUnauthorizedError(error)) {
@@ -83,7 +83,7 @@ export default function StoreOwnerDashboard() {
               <h1 className="text-xl font-semibold text-gray-900">Store Owner Dashboard</h1>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-600">{user?.name}</span>
+              <span className="text-sm text-gray-600">{user?.user?.name}</span>
               <Button
                 variant="outline"
                 size="sm"

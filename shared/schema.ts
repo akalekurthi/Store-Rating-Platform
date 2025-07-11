@@ -54,7 +54,7 @@ export const storesRelations = relations(stores, ({ many, one }) => ({
 
 export const ratingsRelations = relations(ratings, ({ one }) => ({
   user: one(users, { fields: [ratings.userId], references: [users.id] }),
-  store: one(stores, { fields: [ratings.storeId], references: [users.id] }),
+  store: one(stores, { fields: [ratings.storeId], references: [stores.id] }),
 }));
 
 // Schemas

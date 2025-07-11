@@ -83,7 +83,7 @@ export default function UserDashboard() {
               <h1 className="text-xl font-semibold text-gray-900">Store Directory</h1>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-600">{user?.name}</span>
+              <span className="text-sm text-gray-600">{user?.user?.name}</span>
               <Button
                 variant="outline"
                 size="sm"

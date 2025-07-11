@@ -32,11 +32,13 @@ function Router() {
     );
   }
 
+  const userRole = (user as any)?.user?.role;
+  
   return (
     <Switch>
-      {user.role === "admin" && <Route path="/" component={AdminDashboard} />}
-      {user.role === "user" && <Route path="/" component={UserDashboard} />}
-      {user.role === "store_owner" && <Route path="/" component={StoreOwnerDashboard} />}
+      {userRole === "admin" && <Route path="/" component={AdminDashboard} />}
+      {userRole === "user" && <Route path="/" component={UserDashboard} />}
+      {userRole === "store_owner" && <Route path="/" component={StoreOwnerDashboard} />}
       <Route component={NotFound} />
     </Switch>
   );
