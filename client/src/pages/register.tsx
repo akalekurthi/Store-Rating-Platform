@@ -6,6 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
@@ -18,6 +19,7 @@ type RegisterFormData = {
   email: string;
   password: string;
   address?: string;
+  role: string;
 };
 
 export default function RegisterPage() {
@@ -32,6 +34,7 @@ export default function RegisterPage() {
       email: "",
       password: "",
       address: "",
+      role: "user",
     },
   });
 
@@ -181,6 +184,31 @@ export default function RegisterPage() {
                     </FormControl>
                     <FormDescription className="text-xs text-gray-500">
                       8-16 characters, at least one uppercase letter and one special character
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="role"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-medium text-gray-700">Account Type</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                          <SelectValue placeholder="Select account type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="user">Normal User</SelectItem>
+                        <SelectItem value="store_owner">Store Owner</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormDescription className="text-xs text-gray-500">
+                      Choose Normal User to rate stores, or Store Owner to manage your own store
                     </FormDescription>
                     <FormMessage />
                   </FormItem>

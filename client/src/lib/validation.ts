@@ -13,6 +13,7 @@ export const registerSchema = z.object({
     .max(16, "Password must not exceed 16 characters")
     .regex(/^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])/, "Password must contain at least one uppercase letter and one special character"),
   address: z.string().max(400, "Address must not exceed 400 characters").optional(),
+  role: z.enum(["user", "store_owner"]).default("user"),
 });
 
 export const changePasswordSchema = z.object({
